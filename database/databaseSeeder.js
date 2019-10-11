@@ -97,4 +97,4 @@ var seedAccordion = () => {
 }
 module.exports.seedReviews = seedReviews;
 module.exports.seedProducts = seedProducts;
-module.exports.seedAccordion = seedAccordion;
+module.exports.seedAccordion = seedAccordion();
