@@ -1,13 +1,18 @@
 {
-  "name": "",
+  "name": "piccolo-ikea-reviews",
   "version": "",
   "description": "",
-  "author": "",
+  "author": "Daryl Marcos",
   "license": "",
+  "main": "server/index.js",
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seed": "node database/databaseSeeder",
+    "build:dev": "webpack -d --watch",
+    "start": "nodemon /server/index.js"
+  },
   "dependencies": {
     "@babel/core": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
@@ -22,6 +27,7 @@
     "webpack-cli": "^3.3.9"
   },
   "devDependencies": {
+    "casual": "^1.6.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "nodemon": "^1.19.3"
   }
