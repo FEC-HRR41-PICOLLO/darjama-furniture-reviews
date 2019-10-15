@@ -1,10 +1,15 @@
 import ReviewList from './reviewList.jsx'
+import SnapShot from './snapShot.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewsArray: []
+      reviewsArray: [],
+      helpfulClicks:[],
+      reportedReviews: [],
+      currentPage: 1,
+      selectedStars: []
     }
 
   }
@@ -32,15 +37,23 @@ class App extends React.Component {
     return(
       <div>
         Reviews
-        <div className="reviewSnapShot">
-          Review Snapshot Goes Here
-        </div>
-        <div className="reviewAverage">
-          Review Average Ratings Go Here
-        </div>
-        <div className="reviewList">
-          <ReviewList reviews={this.state.reviewsArray}/></div>
-
+        <table>
+          <tbody>
+            <tr>
+              <td className="reviewSnapShot">
+                <SnapShot reviews={this.state.reviewsArray} filter={this.state.selectedStars} />
+              </td>
+              <td className="reviewAverage">
+                Review Average Ratings Go Here
+              </td>
+            </tr>
+            <tr>
+              <td className="reviewList">
+                <ReviewList reviews={this.state.reviewsArray} page={this.state.currentPage} helpfulClicks={this.state.helpfulClicks} reported={this.state.reportedReviews} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }
