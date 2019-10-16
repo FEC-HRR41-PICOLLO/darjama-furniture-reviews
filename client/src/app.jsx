@@ -19,7 +19,15 @@ class App extends React.Component {
     var change = classname.slice(1);
     if (change === 'reviewAddFilter') {
       this.setState({
-        selectedStars: [value]
+        selectedStars: [value],
+        reviewsArray: []
+      },function() { this.getReviewsByProductId(this.urlProductId());
+      console.log(this.state.selectedStars);})
+    }
+    if (change === 'reviewClearFilter') {
+      this.setState({
+        selectedStars: [],
+        reviewsArray: []
       },function() { this.getReviewsByProductId(this.urlProductId());
       console.log(this.state.selectedStars);})
     }

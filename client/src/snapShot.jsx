@@ -1,3 +1,20 @@
+class SnapShotButtons extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render ()
+    { const filter = this.props.filter;
+      let button1;
+      let button2;
+      if (filter.length > 0) {
+        button1 = <button>{this.props.filter[0]} stars &#9447;</button>; button2 = <button>clear &#9447;</button>;
+      }
+      return ( <div>{button1} {button2}</div>
+      )
+  }
+}
+
 class SnapShot extends React.Component {
   constructor(props) {
     super(props);
@@ -45,6 +62,7 @@ class SnapShot extends React.Component {
           <span>2 &#9733; </span><span> -= {this.starPercent('2')}% =- </span><span> {this.starCount('2') || 0} </span></div>
         <div className="1reviewAddFilter" onClick={this.handleClick}><
           span>1 &#9733; </span><span> -= {this.starPercent('1')}% =- </span><span> {this.starCount('1') || 0} </span></div>
+        <div className="0reviewClearFilter" onClick={this.handleClick}><SnapShotButtons filter={this.props.filter}/></div>
       </div>
     )
   }

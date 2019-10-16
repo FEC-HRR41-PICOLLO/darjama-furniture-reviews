@@ -89,15 +89,29 @@ class SingleReview extends React.Component {
 
 }
 
-class ReviewList extends React.Component {
+
+
+class ReviewList extends React.PureComponent {
   constructor(props) {
     super(props);
 
   }
 
+recordSelection() {
+  if (this.props.page === 1) {
+    return [0,7];
+  } else {
+    var start = (this.props.page - 2) * 30 + 8;
+    var end = (this.props.page - 1) * 30 + 7
+    return [start, end];
+  }
+}
+
   render(
-    reviewList = this.props.reviews.map(
-      review => <div key={review.id}><SingleReview review={review}/>
+    reviewList = this.props.reviews
+      .slice(...this.recordSelection())
+      .filter(review => this.props.filter.length > 0 ? this.props.filter[0] == review.overall_rating : -1 )
+      .map(review => <div key={review.id}><SingleReview review={review}/>
       </div>
     )
   ) {
