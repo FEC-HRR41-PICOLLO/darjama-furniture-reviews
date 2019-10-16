@@ -10,8 +10,19 @@ class App extends React.Component {
       reportedReviews: [],
       currentPage: 1,
       selectedStars: []
-    }
+    };
+    this.changeFilter = this.changeFilter.bind(this);
+  }
 
+  changeFilter(classname) {
+    var value = classname.slice(0,1);
+    var change = classname.slice(1);
+    if (change === 'reviewAddFilter') {
+      this.setState({
+        selectedStars: [value]
+      },function() { this.getReviewsByProductId(this.urlProductId());
+      console.log(this.state.selectedStars);})
+    }
   }
 
   urlProductId() {
@@ -41,7 +52,7 @@ class App extends React.Component {
           <tbody>
             <tr>
               <td className="reviewSnapShot">
-                <SnapShot reviews={this.state.reviewsArray} filter={this.state.selectedStars} />
+                <SnapShot reviews={this.state.reviewsArray} filter={this.state.selectedStars} changeFilter={this.changeFilter} />
               </td>
               <td className="reviewAverage">
                 Review Average Ratings Go Here
@@ -49,7 +60,7 @@ class App extends React.Component {
             </tr>
             <tr>
               <td className="reviewList">
-                <ReviewList reviews={this.state.reviewsArray} page={this.state.currentPage} helpfulClicks={this.state.helpfulClicks} reported={this.state.reportedReviews} />
+                <ReviewList reviews={this.state.reviewsArray} page={this.state.currentPage} helpfulClicks={this.state.helpfulClicks} reported={this.state.reportedReviews}  filter={this.state.selectedStars} />
               </td>
             </tr>
           </tbody>

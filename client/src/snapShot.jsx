@@ -1,8 +1,13 @@
 class SnapShot extends React.Component {
   constructor(props) {
     super(props);
-
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick(e){
+    this.props.changeFilter(e.currentTarget.className);
+  }
+
   starCount(star) {
     var result ={};
     var reviews = this.props.reviews;
@@ -30,11 +35,16 @@ class SnapShot extends React.Component {
       <div>
         <p>Rating Snapshot</p>
         <p>Select a row below to filter reviews.</p>
-        <div><span>5 &#9733; </span><span> -= {this.starPercent('5')}% =- </span><span> {this.starCount('5') || 0} </span></div>
-        <div><span>4 &#9733; </span><span> -= {this.starPercent('4')}% =- </span><span> {this.starCount('4') || 0} </span></div>
-        <div><span>3 &#9733; </span><span> -= {this.starPercent('3')}% =- </span><span> {this.starCount('3') || 0} </span></div>
-        <div><span>2 &#9733; </span><span> -= {this.starPercent('2')}% =- </span><span> {this.starCount('2') || 0} </span></div>
-        <div><span>1 &#9733; </span><span> -= {this.starPercent('1')}% =- </span><span> {this.starCount('1') || 0} </span></div>
+        <div className="5reviewAddFilter" onClick={this.handleClick}>
+          <span>5 &#9733; </span><span> -= {this.starPercent('5')}% =- </span><span> {this.starCount('5') || 0} </span></div>
+        <div className="4reviewAddFilter" onClick={this.handleClick}>
+          <span>4 &#9733; </span><span> -= {this.starPercent('4')}% =- </span><span> {this.starCount('4') || 0} </span></div>
+        <div className="3reviewAddFilter" onClick={this.handleClick}>
+          <span>3 &#9733; </span><span> -= {this.starPercent('3')}% =- </span><span> {this.starCount('3') || 0} </span></div>
+        <div className="2reviewAddFilter" onClick={this.handleClick}>
+          <span>2 &#9733; </span><span> -= {this.starPercent('2')}% =- </span><span> {this.starCount('2') || 0} </span></div>
+        <div className="1reviewAddFilter" onClick={this.handleClick}><
+          span>1 &#9733; </span><span> -= {this.starPercent('1')}% =- </span><span> {this.starCount('1') || 0} </span></div>
       </div>
     )
   }
