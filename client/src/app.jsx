@@ -1,5 +1,6 @@
 import ReviewList from './reviewList.jsx'
 import SnapShot from './snapShot.jsx'
+import Averages from './average.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class App extends React.Component {
                 <SnapShot reviews={this.state.reviewsArray} filter={this.state.selectedStars} changeFilter={this.changeFilter} />
               </td>
               <td className="reviewAverage">
-                Review Average Ratings Go Here
+              <Averages reviews={this.state.reviewsArray} />
               </td>
             </tr>
             <tr>
