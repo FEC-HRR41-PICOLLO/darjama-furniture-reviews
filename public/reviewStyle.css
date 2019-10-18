@@ -355,3 +355,21 @@ button {
   collapse;
   border: 0.5px solid rgb(175, 175, 175)
 }
+
+.helpButton {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 0px;
+  font-size:13px;
+  font-weight: 600;
+  border: none;
+  background-color: rgb(234, 234, 234)
+}
+
+.helpButton:hover{
+  box-shadow: 0 0 8px rgba(168, 168, 168, 0.9) inset;
+}
+
+.helpButton:focus{
+  outline: 0;
+}

@@ -10,21 +10,21 @@ class SingleReview extends React.PureComponent {
   }
 
   clickHandler(e) {
-    console.log(e.target.className);
-    if (e.target.className.indexOf('reviewHelpfulYes') > -1) {
-      var reviewId = e.target.className.slice(16);
+    //console.log(e.target.id);
+    if (e.target.id.indexOf('reviewHelpfulYes') > -1) {
+      var reviewId = e.target.id.slice(16);
       var action = 'helpful_count';
       if (this.props.helpfulClicks.indexOf(reviewId) == -1) {
         this.props.reviewAction(reviewId, action)
       }
-    } else if (e.target.className.indexOf('reviewHelpfulNo') > -1) {
-      var reviewId = e.target.className.slice(15);
+    } else if (e.target.id.indexOf('reviewHelpfulNo') > -1) {
+      var reviewId = e.target.id.slice(15);
       var action = 'not_helpful_count';
       if (this.props.helpfulClicks.indexOf(reviewId) == -1) {
         this.props.reviewAction(reviewId, action)
       }
-    } else if (e.target.className.indexOf('reviewReport') > -1) {
-      var reviewId = e.target.className.slice(12);
+    } else if (e.target.id.indexOf('reviewReport') > -1) {
+      var reviewId = e.target.id.slice(12);
       var action = 'reported_count';
       if (this.state.reported == "Report") {
         this.props.reviewAction(reviewId, action);
@@ -109,9 +109,9 @@ class SingleReview extends React.PureComponent {
               <p>{this.props.review.text}</p>
               <p>{this.showRecommendation(this.props.review.recommended)}</p>
               <div>Helpful?
-                <button key={this.props.review.id + "y"} className={"reviewHelpfulYes" + this.props.review.id} onClick={this.clickHandler}>Yes - {helpfulYes}</button>
-                <button key={this.props.review.id + "n"} className={"reviewHelpfulNo" + this.props.review.id} onClick={this.clickHandler}>No - {helpfulNo}</button>
-                <button key={this.props.review.id + "r"} className={"reviewReport" + this.props.review.id} onClick={this.clickHandler}>{this.state.reported}</button></div>
+                <button key={this.props.review.id + "y"} id={"reviewHelpfulYes" + this.props.review.id} className="helpButton" onClick={this.clickHandler}>Yes · {helpfulYes}</button>
+                <button key={this.props.review.id + "n" } id={"reviewHelpfulNo" + this.props.review.id} className="helpButton" onClick={this.clickHandler}>No · {helpfulNo}</button>
+                <button key={this.props.review.id + "r"} id={"reviewReport" + this.props.review.id} className="helpButton" onClick={this.clickHandler}>{this.state.reported}</button></div>
               </td>
               <td className="reviewSingleRatings">
                 <div>
