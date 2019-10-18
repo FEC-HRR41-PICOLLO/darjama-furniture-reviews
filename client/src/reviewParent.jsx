@@ -51,7 +51,7 @@ class ReviewParent extends React.PureComponent {
       success: this.setState({
         helpfulClicks: list
       },
-      this.getReviewsByProductId(this.urlProductId()))
+      () => {this.getReviewsByProductId(this.urlProductId())})
     })
   }
 
