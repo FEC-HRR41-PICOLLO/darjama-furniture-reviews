@@ -379,3 +379,14 @@ button:focus{
   color: rgb(130,130,130);
   box-shadow: 0 0 0px rgba(255, 255, 255, 0) inset;
 }
+
+.filterButton{
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 0px;
+  font-size:13px;
+  font-weight: 600;
+  border: none;
+  background-color: rgb(234, 234, 234)
+
+}
