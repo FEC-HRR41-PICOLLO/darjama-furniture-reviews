@@ -8,7 +8,6 @@ class ReviewParent extends React.PureComponent {
     this.state = {
       reviewsArray: [],
       helpfulClicks:[],
-      currentPage: 1,
       selectedStars: []
     };
     this.changeFilter = this.changeFilter.bind(this);
@@ -96,7 +95,7 @@ class ReviewParent extends React.PureComponent {
           <tbody>
             <tr>
               <td className="reviewList" width="100%">
-                <ReviewList reviews={this.state.reviewsArray} page={this.state.currentPage} helpfulClicks={this.state.helpfulClicks} filter={this.state.selectedStars} reviewAction={this.reviewAction}/>
+                <ReviewList reviews={this.state.reviewsArray} helpfulClicks={this.state.helpfulClicks} filter={this.state.selectedStars} reviewAction={this.reviewAction}/>
               </td>
             </tr>
           </tbody>

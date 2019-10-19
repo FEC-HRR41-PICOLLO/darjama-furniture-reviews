@@ -356,7 +356,7 @@ button {
   border: 0.5px solid rgb(175, 175, 175)
 }
 
-.helpButton {
+.helpButton, .reviewsPage {
   padding-top: 4px;
   padding-bottom: 4px;
   border-radius: 0px;
@@ -366,10 +366,16 @@ button {
   background-color: rgb(234, 234, 234)
 }
 
-.helpButton:hover{
+
+.reviewsPage:hover, .helpButton:hover{
   box-shadow: 0 0 8px rgba(168, 168, 168, 0.9) inset;
 }
 
-.helpButton:focus{
+button:focus{
   outline: 0;
+}
+
+.reviewsPage:disabled, .helpButton:disabled{
+  color: rgb(130,130,130);
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0) inset;
 }
