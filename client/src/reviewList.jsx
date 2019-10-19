@@ -85,6 +85,10 @@ class ReviewList extends React.Component {
   setTimeout(() => {this.setLastPage()}, 1000)
   }
 
+  componentDidUpdate() {
+    setTimeout(() => {this.setLastPage()}, 1000)
+    }
+
   render(
     reviewList = this.props.reviews
       .filter(review => this.props.filter.length > 0 ? this.props.filter[0] == review.overall_rating : -1 )
