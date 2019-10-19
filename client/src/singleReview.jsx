@@ -14,27 +14,20 @@ class SingleReview extends React.PureComponent {
     if (e.target.id.indexOf('reviewHelpfulYes') > -1) {
       var reviewId = e.target.id.slice(16);
       var action = 'helpful_count';
-      if (this.props.helpfulClicks.indexOf(reviewId) == -1) {
         this.props.reviewAction(reviewId, action)
-      }
     } else if (e.target.id.indexOf('reviewHelpfulNo') > -1) {
       var reviewId = e.target.id.slice(15);
       var action = 'not_helpful_count';
-      if (this.props.helpfulClicks.indexOf(reviewId) == -1) {
         this.props.reviewAction(reviewId, action)
-      }
     } else if (e.target.id.indexOf('reviewReport') > -1) {
       var reviewId = e.target.id.slice(12);
       var action = 'reported_count';
-      if (this.state.reported == "Report") {
         this.props.reviewAction(reviewId, action);
         this.setState({
           reported: "Reported"
         })
-
       }
     }
-  }
 
   showDate(mysqlTime) {
     var year = Number(mysqlTime.substring(0,4));
