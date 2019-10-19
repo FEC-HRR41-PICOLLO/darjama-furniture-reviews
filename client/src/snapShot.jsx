@@ -10,7 +10,7 @@ class SnapShotButtons extends React.Component {
       let button1;
       let button2;
       if (filter.length > 0) {
-        button1 = <button className="filterButton" style={{backgroundColor:"#0e7fd5", color:"white"}}>{this.props.filter[0]} Stars &#9447;</button>; button2 = <button className="filterButton">Clear All &#9447;</button>;
+        button1 = <button className="reviewFilterButton" style={{backgroundColor:"#0e7fd5", color:"white"}}>{this.props.filter[0]} Stars &#9447;</button>; button2 = <button className="reviewFilterButton">Clear All &#9447;</button>;
       }
       return ( <div>{button1} {button2}</div>
       )

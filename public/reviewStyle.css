@@ -356,7 +356,7 @@ button {
   border: 0.5px solid rgb(175, 175, 175)
 }
 
-.helpButton, .reviewsPage {
+.reviewHelpButton, .reviewsPage {
   padding-top: 4px;
   padding-bottom: 4px;
   border-radius: 0px;
@@ -367,7 +367,7 @@ button {
 }
 
 
-.reviewsPage:hover, .helpButton:hover{
+.reviewsPage:hover, .reviewHelpYes:hover, .reviewHelpNo:hover, .reviewHelpReport:hover{
   box-shadow: 0 0 8px rgba(168, 168, 168, 0.9) inset;
 }
 
@@ -375,12 +375,12 @@ button:focus{
   outline: 0;
 }
 
-.reviewsPage:disabled, .helpButton:disabled{
+.reviewsPage:disabled{
   color: rgb(130,130,130);
   box-shadow: 0 0 0px rgba(255, 255, 255, 0) inset;
 }
 
-.filterButton{
+.reviewHelpYes,.reviewHelpNo, .reviewHelpReport, .reviewFilterButton{
   padding-top: 4px;
   padding-bottom: 4px;
   border-radius: 0px;
@@ -389,4 +389,21 @@ button:focus{
   border: none;
   background-color: rgb(234, 234, 234)
 
+}
+
+.reviewHelpYes:disabled{
+  color:green;
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0) inset;
+}
+
+.reviewHelpNo:disabled{
+  color: red;
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0) inset;
+}
+
+.reviewHelpReport:disabled{
+  background-color: white;
+  color: black;
+  font-style: italic;
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0) inset;
 }

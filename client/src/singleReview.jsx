@@ -93,6 +93,7 @@ class SingleReview extends React.PureComponent {
     const review = this.props.review;
     const helpfulYes = review.helpful_count;
     const helpfulNo = review.not_helpful_count;
+    const disableHelpButton = this.props.helpfulClicks.indexOf(review.id.toString()) > -1;
     return(
       <div>
         <hr style={{border: '1px dotted', borderstyle: 'none none dotted', color: 'rgb(225,225,225'}} />
@@ -109,9 +110,9 @@ class SingleReview extends React.PureComponent {
               <p>{this.props.review.text}</p>
               <p>{this.showRecommendation(this.props.review.recommended)}</p>
               <div>Helpful?
-                <button key={this.props.review.id + "y"} id={"reviewHelpfulYes" + this.props.review.id} className="helpButton" onClick={this.clickHandler}>Yes · {helpfulYes}</button>
-                <button key={this.props.review.id + "n" } id={"reviewHelpfulNo" + this.props.review.id} className="helpButton" onClick={this.clickHandler}>No · {helpfulNo}</button>
-                <button key={this.props.review.id + "r"} id={"reviewReport" + this.props.review.id} className="helpButton" onClick={this.clickHandler}>{this.state.reported}</button></div>
+                <button disabled={disableHelpButton} key={review.id + "y"} id={"reviewHelpfulYes" + review.id} className="reviewHelpYes" onClick={this.clickHandler}><span style={{color:"black"}}>Yes </span>· {helpfulYes}</button>
+                <button disabled={disableHelpButton} key={review.id + "n" } id={"reviewHelpfulNo" + review.id} className="reviewHelpNo" onClick={this.clickHandler}><span style={{color:"black"}}>No </span> · {helpfulNo}</button>
+                <button disabled={this.state.reported === "Reported"} key={review.id + "r"} id={"reviewReport" + this.props.review.id} className="reviewHelpReport" onClick={this.clickHandler}>{this.state.reported}</button></div>
               </td>
               <td className="reviewSingleRatings">
                 <div>

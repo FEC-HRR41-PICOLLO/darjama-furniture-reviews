@@ -72,7 +72,7 @@ class ReviewList extends React.Component {
 
   recordSelection() {
     if (this.state.currentPage === 1) {
-      return [0,7];
+      return [0,8];
     } else {
       var start = (this.state.currentPage - 2) * 30 + 8;
       var end = (this.state.currentPage - 1) * 30 + 7
