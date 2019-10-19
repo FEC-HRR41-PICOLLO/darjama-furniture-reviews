@@ -21,10 +21,11 @@ class ReviewList extends React.Component {
 
   setLastPage(){
     var finalPage;
-    if (this.props.reviews.length <= 8) {
+    var length = this.props.reviews.filter(review => this.props.filter.length > 0 ? this.props.filter[0] == review.overall_rating : -1 ).length;
+    if (length <= 8) {
       finalPage = 1;
     } else {
-    finalPage = Math.ceil((this.props.reviews.length - 8)/30)+1;
+    finalPage = Math.ceil((length - 8)/30)+1;
     }
     this.setState({
       lastPage: finalPage
@@ -54,7 +55,7 @@ class ReviewList extends React.Component {
   rangeOfReviews(){
     var start;
     var end;
-    var length = this.props.reviews.length;
+    var length = this.props.reviews.filter(review => this.props.filter.length > 0 ? this.props.filter[0] == review.overall_rating : -1 ).length;
     if (this.state.currentPage === 1) {
       start = 1;
     } else {
@@ -86,8 +87,8 @@ class ReviewList extends React.Component {
 
   render(
     reviewList = this.props.reviews
-      .slice(...this.recordSelection())
       .filter(review => this.props.filter.length > 0 ? this.props.filter[0] == review.overall_rating : -1 )
+      .slice(...this.recordSelection())
       .map(review => <div key={review.id}><SingleReview review={review} helpfulClicks={this.props.helpfulClicks} reviewAction={this.props.reviewAction}/>
       </div>
     )
