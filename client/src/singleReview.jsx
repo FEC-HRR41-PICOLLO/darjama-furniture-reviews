@@ -96,7 +96,7 @@ class SingleReview extends React.PureComponent {
     return(
       <div>
         <hr style={{border: '1px dotted', borderstyle: 'none none dotted', color: 'rgb(225,225,225'}} />
-        <table>
+        <table style={{width: "100%"}}>
           <tbody>
             <tr>
              <td className="reviewSingleMain">

@@ -284,12 +284,12 @@ td {
 
 .reviewSingleMain {
   width: 66%;
-  max-width: 700px;
+  max-width: 1200px;
   padding: 8px
 }
 .reviewSingleRatings {
   width: 34%;
-  padding: 8px
+  padding: 8px;
 }
 
 .reviewTitle {

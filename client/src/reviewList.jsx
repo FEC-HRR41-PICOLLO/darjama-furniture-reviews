@@ -12,12 +12,12 @@ class ReviewList extends React.Component {
     this.setLastPage = this.setLastPage.bind(this);
     this.pageUp = this.pageUp.bind(this);
     this.pageDown = this.pageDown.bind(this);
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+    //this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
   }
 
-  forceUpdateHandler() {
-    forceUpdate();
-  }
+  // forceUpdateHandler() {
+  //   this.forceUpdate();
+  // }
 
   setLastPage(){
     var finalPage;
@@ -39,7 +39,7 @@ class ReviewList extends React.Component {
       this.setState({
         currentPage: this.state.currentPage + 1
       })
-      forceUpdateHandler();
+      //this.forceUpdateHandler();
     }
   }
 
@@ -48,7 +48,7 @@ class ReviewList extends React.Component {
       this.setState({
         currentPage: this.state.currentPage - 1
       })
-      forceUpdateHandler();
+      //this.forceUpdateHandler();
     }
   }
 
@@ -84,10 +84,6 @@ class ReviewList extends React.Component {
   componentDidMount() {
   setTimeout(() => {this.setLastPage()}, 1000)
   }
-
-  componentDidUpdate() {
-    setTimeout(() => {this.setLastPage()}, 1000)
-    }
 
   render(
     reviewList = this.props.reviews
