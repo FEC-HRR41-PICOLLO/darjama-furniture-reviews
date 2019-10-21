@@ -78,28 +78,32 @@ class ReviewParent extends React.PureComponent {
 
     return(
       <div>
-        <table width="100%">
-          <thead ><tr><td className="tableHeading">Reviews</td></tr></thead>
-          <tbody>
-            <tr>
-              <td className="reviewSnapShot" width="50%">
-                <SnapShot reviews={this.state.reviewsArray} filter={this.state.selectedStars} changeFilter={this.changeFilter} />
-              </td>
-              <td className="reviewAverageSummary" width="50%">
-              <Averages reviews={this.state.reviewsArray} />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <table width="100%">
-          <tbody>
-            <tr>
-              <td className="reviewList" width="100%">
-                <ReviewList reviews={this.state.reviewsArray} helpfulClicks={this.state.helpfulClicks} filter={this.state.selectedStars} reviewAction={this.reviewAction}/>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <table><tbody><tr>
+          <td style={{width:"12px"}}></td>
+          <td>
+            <table width="100%">
+            <thead ><tr><td className="tableHeading">Reviews</td></tr></thead>
+            <tbody>
+              <tr>
+                <td className="reviewSnapShot" width="50%">
+                  <SnapShot reviews={this.state.reviewsArray} filter={this.state.selectedStars} changeFilter={this.changeFilter} />
+                </td>
+                <td className="reviewAverageSummary" width="50%">
+                <Averages reviews={this.state.reviewsArray} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td className="reviewList" width="100%">
+                  <ReviewList reviews={this.state.reviewsArray} helpfulClicks={this.state.helpfulClicks} filter={this.state.selectedStars} reviewAction={this.reviewAction}/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </td></tr></tbody></table>
     </div>
     )
   }
