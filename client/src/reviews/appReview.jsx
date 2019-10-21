@@ -51,8 +51,8 @@ class AppReview extends React.Component {
 
     return(
       <div>
-        <ReviewParentDiv>
-        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Reviews</h5>
+        <ReviewParentDiv id="ReviewSection">
+        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted}>+</Rotate> Reviews</h5>
         <FadeInDiv>
         {this.state.isStarted ? (this.state.isOpen ? <ReviewParent /> : "") : "" }
     </FadeInDiv></ReviewParentDiv>

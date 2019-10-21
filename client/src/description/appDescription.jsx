@@ -51,7 +51,7 @@ class AppDescription extends React.Component {
 
     return(
       <div>
-        <DescriptionParentDiv>
+        <DescriptionParentDiv id="DescriptionSection">
         <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Product Description</h5>
         <FadeInDiv>
         {this.state.isStarted ? (this.state.isOpen ? <Description /> : "") : "" }
