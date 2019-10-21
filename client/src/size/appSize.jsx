@@ -1,8 +1,8 @@
-import Rotate from './sectionBox.jsx'
+import Rotate from '../sectionBox.jsx'
 import styled, {keyframes} from 'styled-components'
-import Materials from './materials.jsx'
+import Size from './size.jsx'
 
-class AppMaterials extends React.Component {
+class AppSize extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class AppMaterials extends React.Component {
   }
 
   render() {
-    const MaterialsParentDiv = styled.div`
+    const SizeParentDiv = styled.div`
       display: block;
       width: 100%;
       min-height: 70px;
@@ -51,14 +51,14 @@ class AppMaterials extends React.Component {
 
     return(
       <div>
-        <MaterialsParentDiv>
-        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Environment and Materials</h5>
+        <SizeParentDiv>
+        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Size</h5>
         <FadeInDiv>
-        {this.state.isStarted ? (this.state.isOpen ? <Materials /> : "") : "" }
-    </FadeInDiv></MaterialsParentDiv>
+        {this.state.isStarted ? (this.state.isOpen ? <Size /> : "") : "" }
+    </FadeInDiv></SizeParentDiv>
       </div>
     )
   }
 }
 
-export default AppMaterials
+export default AppSize

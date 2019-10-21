@@ -1,8 +1,8 @@
-import Rotate from './sectionBox.jsx'
+import Rotate from '../sectionBox.jsx'
 import styled, {keyframes} from 'styled-components'
-import Size from './size.jsx'
+import Description from './description.jsx'
 
-class AppSize extends React.Component {
+class AppDescription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class AppSize extends React.Component {
   }
 
   render() {
-    const SizeParentDiv = styled.div`
+    const DescriptionParentDiv = styled.div`
       display: block;
       width: 100%;
       min-height: 70px;
@@ -51,14 +51,14 @@ class AppSize extends React.Component {
 
     return(
       <div>
-        <SizeParentDiv>
-        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Size</h5>
+        <DescriptionParentDiv>
+        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Product Description</h5>
         <FadeInDiv>
-        {this.state.isStarted ? (this.state.isOpen ? <Size /> : "") : "" }
-    </FadeInDiv></SizeParentDiv>
+        {this.state.isStarted ? (this.state.isOpen ? <Description /> : "") : "" }
+    </FadeInDiv></DescriptionParentDiv>
       </div>
     )
   }
 }
 
-export default AppSize
+export default AppDescription

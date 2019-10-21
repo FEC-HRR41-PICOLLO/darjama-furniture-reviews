@@ -1,9 +1,9 @@
 import Rotate from './sectionBox.jsx'
 import styled, {keyframes} from 'styled-components'
-import AppDescription from './appDescription.jsx'
-import AppSize from './appSize.jsx'
-import AppMaterials from './appMaterials.jsx'
-import AppReview from './appReview.jsx'
+import AppDescription from './description/appDescription.jsx'
+import AppSize from './size/appSize.jsx'
+import AppMaterials from './materials/appMaterials.jsx'
+import AppReview from './reviews/appReview.jsx'
 
 class App extends React.Component {
   constructor(props) {

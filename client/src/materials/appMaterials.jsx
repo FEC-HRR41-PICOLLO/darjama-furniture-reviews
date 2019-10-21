@@ -1,8 +1,8 @@
-import Rotate from './sectionBox.jsx'
+import Rotate from '../sectionBox.jsx'
 import styled, {keyframes} from 'styled-components'
-import ReviewParent from './reviewParent.jsx'
+import Materials from './materials.jsx'
 
-class AppReview extends React.Component {
+class AppMaterials extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,22 +17,22 @@ class AppReview extends React.Component {
       isStarted: true,
       isOpen: !this.state.isOpen
     })
-    console.log(this.state.Open)
   }
 
   render() {
-    const ReviewParentDiv = styled.div`
+    const MaterialsParentDiv = styled.div`
       display: block;
       width: 100%;
       min-height: 70px;
       vertical-align: center;
       border-top: 1px solid grey;
+
       :hover {
         background-color: ${props => this.state.isOpen ? "white" : "rgb(230, 240, 255)"};
       }`;
       const fadeIn = keyframes`
       from {
-        transform: translate(0px,-50px);
+        transform: translate(0px,-20px);
         opacity: 0;
       }
 
@@ -51,15 +51,14 @@ class AppReview extends React.Component {
 
     return(
       <div>
-        <ReviewParentDiv>
-        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Reviews</h5>
+        <MaterialsParentDiv>
+        <h5 onClick={this.toggleOpen}><Rotate isOpen={this.state.isOpen} isStarted={this.state.isStarted} >+</Rotate> Environment and Materials</h5>
         <FadeInDiv>
-        {this.state.isStarted ? (this.state.isOpen ? <ReviewParent /> : "") : "" }
-    </FadeInDiv></ReviewParentDiv>
-
+        {this.state.isStarted ? (this.state.isOpen ? <Materials /> : "") : "" }
+    </FadeInDiv></MaterialsParentDiv>
       </div>
     )
   }
 }
 
-export default AppReview
+export default AppMaterials
