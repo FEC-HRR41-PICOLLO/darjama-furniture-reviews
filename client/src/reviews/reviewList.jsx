@@ -90,7 +90,7 @@ class ReviewList extends React.PureComponent {
   render(
   ) {
     const {
-      filtered, reviews, reviewAction, helpfulClicks,
+      filtered, reviews,
     } = this.props;
     const { currentPage, lastPage } = this.state;
     const reviewList = reviews
@@ -98,7 +98,7 @@ class ReviewList extends React.PureComponent {
       .slice(...this.recordSelection())
       .map((review) => (
         <div key={review.id}>
-          <SingleReview review={review} helpfulClicks={helpfulClicks} reviewAction={reviewAction} />
+          <SingleReview review={review} />
         </div>
       ));
     return (

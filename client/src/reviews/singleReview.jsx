@@ -2,30 +2,81 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import $ from 'jquery';
 
 class SingleReview extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.reviewAction = this.reviewAction.bind(this);
+    this.updateHelpful = this.updateHelpful.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
     this.state = {
       reported: 'Report',
+      helpfulClicks: [],
+      yesClicks: 0,
+      noClicks: 0,
     };
   }
 
+  componentDidMount() {
+    const { review } = this.props;
+    this.setState({
+      yesClicks: review.helpful_count,
+      noClicks: review.not_helpful_count,
+    });
+  }
+
+  updateHelpful(action) {
+    if (action === 'reported_count') {
+      return;
+    }
+    let newYes; let newNo;
+    const { yesClicks, noClicks } = this.state;
+    if (action === 'helpful_count') {
+      newYes = 1 + yesClicks;
+      newNo = noClicks;
+    } else {
+      newYes = yesClicks;
+      newNo = 1 + noClicks;
+    }
+    this.setState({
+      yesClicks: newYes,
+      noClicks: newNo,
+    });
+  }
+
+  reviewAction(id, action) {
+    const { helpfulClicks } = this.state;
+    const list = helpfulClicks;
+    if (action !== 'reported_count') {
+      list.push(id);
+    }
+    $.ajax({
+      type: 'POST',
+      datatype: 'json',
+      contentType: 'application/json',
+      url: 'http://localhost:3003/api-increment',
+      data: JSON.stringify({ column: action, id }),
+      success: this.setState({
+        helpfulClicks: list,
+      },
+      () => { this.updateHelpful(action); }),
+    });
+  }
+
   clickHandler(e) {
-    const { reviewAction } = this.props;
     if (e.target.id.indexOf('reviewHelpfulYes') > -1) {
       const reviewId = e.target.id.slice(16);
       const action = 'helpful_count';
-      reviewAction(reviewId, action);
+      this.reviewAction(reviewId, action);
     } else if (e.target.id.indexOf('reviewHelpfulNo') > -1) {
       const reviewId = e.target.id.slice(15);
       const action = 'not_helpful_count';
-      reviewAction(reviewId, action);
+      this.reviewAction(reviewId, action);
     } else if (e.target.id.indexOf('reviewReport') > -1) {
       const reviewId = e.target.id.slice(12);
       const action = 'reported_count';
-      reviewAction(reviewId, action);
+      this.reviewAction(reviewId, action);
       this.setState({
         reported: 'Reported',
       });
@@ -88,10 +139,8 @@ class SingleReview extends React.PureComponent {
 
   render(
   ) {
-    const { review, helpfulClicks } = this.props;
-    const { reported } = this.state;
-    const helpfulYes = review.helpful_count;
-    const helpfulNo = review.not_helpful_count;
+    const { review } = this.props;
+    const { reported, yesClicks, noClicks, helpfulClicks } = this.state;
     const disableHelpButton = helpfulClicks.indexOf(review.id.toString()) > -1;
     return (
       <div>
@@ -126,14 +175,14 @@ class SingleReview extends React.PureComponent {
                     <span style={{ color: 'black' }}>Yes </span>
                     ·
                     {' '}
-                    {helpfulYes}
+                    {yesClicks}
                   </button>
                   <button type="button" disabled={disableHelpButton} key={`${review.id}n`} id={`reviewHelpfulNo${review.id}`} className="reviewHelpNo" onClick={this.clickHandler}>
                     <span style={{ color: 'black' }}>No </span>
                     {' '}
                     ·
                     {' '}
-                    {helpfulNo}
+                    {noClicks}
                   </button>
                   <button type="button" disabled={reported === 'Reported'} key={`${review.id}r`} id={`reviewReport${review.id}`} className="reviewHelpReport" onClick={this.clickHandler}>{reported}</button>
 

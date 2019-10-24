@@ -10,22 +10,20 @@ class ReviewParent extends React.PureComponent {
     super(props);
     this.state = {
       reviewsArray: [],
-      helpfulClicks: [],
       selectedStars: [],
     };
     this.changeFilter = this.changeFilter.bind(this);
-    this.reviewAction = this.reviewAction.bind(this);
   }
 
   componentDidMount() {
     this.getReviewsByProductId(this.urlProductId());
   }
 
-  getReviewsByProductId(id) {
+  getReviewsByProductId(id, callback = () => {}) {
     $.get('http://localhost:3003/api-reviews', { product_id: id }, (data) => {
       this.setState({
         reviewsArray: data,
-      });
+      }, callback);
     }, 'json');
   }
 
@@ -50,26 +48,6 @@ class ReviewParent extends React.PureComponent {
       });
     }
   }
-
-  reviewAction(id, action) {
-    const { helpfulClicks } = this.state;
-    const list = helpfulClicks;
-    if (action !== 'reported_count') {
-      list.push(id);
-    }
-    $.ajax({
-      type: 'POST',
-      datatype: 'json',
-      contentType: 'application/json',
-      url: 'http://localhost:3003/api-increment',
-      data: JSON.stringify({ column: action, id }),
-      success: this.setState({
-        helpfulClicks: list,
-      },
-      () => { this.getReviewsByProductId(this.urlProductId()); }),
-    });
-  }
-
 
   // eslint-disable-next-line class-methods-use-this
   urlProductId() {
@@ -112,9 +90,7 @@ class ReviewParent extends React.PureComponent {
                       <td className="reviewList" width="100%">
                         <ReviewList
                           reviews={reviewsArray}
-                          helpfulClicks={helpfulClicks}
                           filtered={selectedStars}
-                          reviewAction={this.reviewAction}
                         />
                       </td>
                     </tr>
