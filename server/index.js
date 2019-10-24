@@ -22,6 +22,7 @@ app.get('/api-reviews', (req, res) => {
     if (err) {
       throw err;
     } else {
+      res.status(200);
       res.end(JSON.stringify(results));
     }
   });
@@ -32,6 +33,7 @@ app.get('/api-product-data', (req, res) => {
     if (err) {
       throw err;
     } else {
+      res.status(200);
       res.end(JSON.stringify(results));
     }
   });
@@ -43,6 +45,7 @@ app.post('/api-increment', (req, res) => {
     if (err) {
       throw err;
     } else {
+      res.status(200);
       res.end(JSON.stringify(results));
     }
   });
