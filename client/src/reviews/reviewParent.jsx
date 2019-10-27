@@ -108,15 +108,16 @@ class ReviewParent extends React.PureComponent {
     );
   }
 
-  render() {
+    render() {
     const { reviewsArray } = this.state;
+    const noReviews = (
+      <p>
+        There are no reviews for this item.
+      </p>
+    );
     return (
       <div>
-        {reviewsArray.length === 0 ? (
-          <p>
-            There are no reviews for this item.
-          </p>
-        ) : this.reviewStructure()}
+        {reviewsArray.length === 0 ? setTimeout(() => { return noReviews; }, 750) : this.reviewStructure()}
       </div>
     );
   }

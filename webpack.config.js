@@ -1,11 +1,13 @@
 const path = require('path');
+var CompressionPlugin = require('compression-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: './client/index.jsx',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'reviewBundle.js',
+    filename: 'reviewBundle.js', 
   },
+  plugins: [new CompressionPlugin()],
   module: {
     rules: [
       {
