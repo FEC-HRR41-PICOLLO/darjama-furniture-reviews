@@ -2,7 +2,7 @@
   "name": "piccolo-ikea-reviews",
   "version": "1.0.0",
   "description": "",
-  "author": "Daryl Marco",
+  "author": "Silin Dang",
   "license": "",
   "main": "server/index.js",
   "engines": {
@@ -39,6 +39,7 @@
     "babel-minify-webpack-plugin": "^0.3.1",
     "babel-preset-minify": "^0.5.1",
     "casual": "^1.6.2",
+    "compression-webpack-plugin": "^3.0.0",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",

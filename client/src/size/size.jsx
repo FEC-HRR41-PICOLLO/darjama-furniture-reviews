@@ -15,7 +15,7 @@ class Size extends React.Component {
 
   getDescriptionByProductId(id) {
     // console.log(id);
-    $.get('http://ec2-3-19-218-185.us-east-2.compute.amazonaws.com:3003/api-product-data', { product_id: id }, (data) => {
+    $.get('/api-product-data', { product_id: id }, (data) => {
       this.setState({
         descriptionData: data[0],
       });
@@ -73,15 +73,14 @@ class Size extends React.Component {
   }
 
 
-
   render() {
     const { descriptionData } = this.state;
     return (
       <div>
         {!descriptionData ? (
-        <p>
+          <p>
           Sorry, we don&apos;t have any size information for this product.
-        </p>
+          </p>
         ) : this.sizeStructure()}
       </div>
 

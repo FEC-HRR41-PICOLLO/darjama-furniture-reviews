@@ -16,9 +16,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'), {});
 });
 
-app.get('/api-reviews', (req, res) => {
-  // console.log("received request: ", req.query);
-  db.getReviewsByProductId(req.query, (err, results) => {
+app.get('/api-reviews/:productid', (req, res) => {
+  db.getReviewsByProductId(req.params.productid, (err, results) => {
     if (err) {
       throw err;
     } else {
@@ -28,8 +27,44 @@ app.get('/api-reviews', (req, res) => {
   });
 });
 
+// create
+app.post('/api-reviews', (req, res) => {
+  const obj = {};
+  obj.product_id = req.body.product_id;
+  obj.title = req.body.title;
+  obj.text = req.body.text;
+  obj.date = new Date(new Date() - 0).toISOString().slice(0, 10);
+  obj.author = req.body.author;
+  obj.overall_rating = req.body.overall_rating;
+  obj.value_rating = req.body.value_rating;
+  obj.quality_rating = req.body.quality_rating;
+  obj.appearance_rating = req.body.appearance_rating;
+  obj.ease_of_assembly_rating = req.body.ease_of_assembly_rating;
+  obj.works_as_expected_rating = req.body.works_as_expected_rating;
+  obj.recommended = req.body.recommended;
+  obj.helpful_count = req.body.helpful_count;
+  obj.not_helpful_count = req.body.not_helpful_count;
+
+  db.postReviewsByProductId(obj, (err, results) => {
+    if (err) {
+      throw err;
+    } else {
+      res.status(200);
+      res.end(JSON.stringify(results));
+    }
+  });
+});
+app.delete('/api-reviews/:id', (req, res) => {
+  db.deleteReviewsById(req.params.id, (err, results) => {
+    if (err) {
+      throw err;
+    }
+    res.writeHead(200);
+    res.end(JSON.stringify(results));
+  });
+});
 app.get('*.js', (req, res, next) => {
-  req.url = req.url + '.gz';
+  req.url += '.gz';
   res.set('Content-Encoding', 'gzip');
   next();
 });
@@ -45,8 +80,8 @@ app.get('/api-product-data', (req, res) => {
   });
 });
 
-app.post('/api-increment', (req, res) => {
-  // console.log(req.body);
+// update
+app.put('/api-increment', (req, res) => {
   db.incrementReviewCounts(req.body, (err, results) => {
     if (err) {
       throw err;

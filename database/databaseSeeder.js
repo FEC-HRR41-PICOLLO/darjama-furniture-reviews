@@ -5,7 +5,7 @@ const casual = require('casual');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'parsnip9000',
+  password: 'JackAndKat',
   database: 'ikea_reviews',
 });
 
@@ -50,7 +50,7 @@ function ReviewRecordMaker() {
   obj.helpful_count = rando(0, 77);
   obj.not_helpful_count = rando(0, 77);
   return obj;
-};
+}
 
 function ProductRecordMaker() {
   // add in productID when iterating thru database insertion
@@ -65,7 +65,7 @@ function ProductRecordMaker() {
   obj.environment = casual.sentences(rando(4 - 7));
   obj.materials = casual.sentences(rando(4 - 7));
   return obj;
-};
+}
 
 const insertProductSeeds = function (idList, recordMaker) {
   for (let i = 0; i < idList.length; i++) {
@@ -109,9 +109,9 @@ function Overseeder() {
   return obj;
 }
 
-let overSeedReviews = function (recordMaker, count) {
+const overSeedReviews = function (recordMaker, count) {
   for (let i = 0; i < count; i++) {
-    let randomizedRecord = recordMaker();
+    const randomizedRecord = recordMaker();
     connection.query('INSERT INTO reviews SET ?', randomizedRecord, (error, results, fields) => {
       if (error) {
         console.error(error);

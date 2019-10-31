@@ -15,7 +15,7 @@ class Description extends React.Component {
 
   getDescriptionByProductId(id) {
     // console.log(id);
-    $.get('http://ec2-3-19-218-185.us-east-2.compute.amazonaws.com:3003/api-product-data', { product_id: id }, (data) => {
+    $.get('/api-product-data', { product_id: id }, (data) => {
       this.setState({
         descriptionData: data[0],
       });

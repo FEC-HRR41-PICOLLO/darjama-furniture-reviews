@@ -21,7 +21,7 @@ class ReviewParent extends React.PureComponent {
   }
 
   getReviewsByProductId(id, callback = () => {}) {
-    $.get('http://ec2-3-19-218-185.us-east-2.compute.amazonaws.com:3003/api-reviews', { product_id: id }, (data) => {
+    $.get('/api-reviews', { product_id: id }, (data) => {
       this.setState({
         reviewsArray: data,
       }, callback);
