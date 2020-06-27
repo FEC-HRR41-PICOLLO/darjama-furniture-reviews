@@ -1,6 +1,4 @@
-# Project Name
-
-> Pi-kea: Project Piccolo's reproduction of the Ikea product page
+# Pi-kea: Project Piccolo's reproduction of the Ikea product page
 
 ## Related Projects
   - https://github.com/FEC-HRR41-PICOLLO/darjama-ikea-reviews (this file)
