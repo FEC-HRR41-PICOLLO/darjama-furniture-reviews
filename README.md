@@ -1,4 +1,4 @@
-# Pi-kea: Project Piccolo's reproduction of the Ikea product page
+# Sofamart: Product Page Review Section
 ![animated screenshot](sofamart.1417ef76.gif)
 ## Related Projects
   - https://github.com/FEC-HRR41-PICOLLO/darjama-ikea-reviews (this file)
