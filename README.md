@@ -1,10 +1,10 @@
 # Sofamart: Product Page Review Section
 ![animated screenshot](sofamart.1417ef76.gif)
 ## Related Projects
-  - https://github.com/FEC-HRR41-PICOLLO/darjama-ikea-reviews (this file)
-  - https://github.com/FEC-HRR41-PICOLLO/ryuuohlee-ikea-item-description
-  - https://github.com/FEC-HRR41-PICOLLO/DavidFuent1-Ikea-PhotoCarousel
-  - https://github.com/FEC-HRR41-PICOLLO/djason-ikea-similar-products
+  - [Reviews](https://github.com/FEC-HRR41-PICOLLO/darjama-furniture-reviews) (this file)
+  - [Item Description](https://github.com/FEC-HRR41-PICOLLO/ryuuohlee-ikea-item-description)
+  - [Photo Carousel](https://github.com/FEC-HRR41-PICOLLO/DavidFuent1-Ikea-PhotoCarousel)
+  - [Similar Products](https://github.com/FEC-HRR41-PICOLLO/djason-ikea-similar-products)
 
 ## Table of Contents
 
